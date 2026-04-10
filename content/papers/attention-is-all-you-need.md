@@ -2,9 +2,11 @@
 title: "Attention Is All You Need"
 date: 2024-01-15T10:00:00+08:00
 draft: false
-tags: ["transformer", "attention", "deep-learning", "NLP"]
-categories: ["自然语言处理", "深度学习"]
-research-areas: ["序列建模", "注意力机制"]
+
+# 分类（研究领域）
+categories: ["自然语言处理"]
+
+# 会议/期刊
 venues: "NeurIPS 2017"
 
 # 论文元数据

@@ -2,9 +2,11 @@
 title: "Deep Residual Learning for Image Recognition"
 date: 2024-02-10T14:30:00+08:00
 draft: false
-tags: ["resnet", "residual-learning", "computer-vision", "deep-learning", "CNN"]
-categories: ["计算机视觉", "深度学习"]
-research-areas: ["图像识别", "网络架构"]
+
+# 分类（研究领域）
+categories: ["计算机视觉"]
+
+# 会议/期刊
 venues: "CVPR 2016"
 
 # 论文元数据

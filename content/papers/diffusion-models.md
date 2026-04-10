@@ -2,9 +2,11 @@
 title: "Denoising Diffusion Probabilistic Models"
 date: 2024-03-01T09:00:00+08:00
 draft: false
-tags: ["diffusion", "generative-model", "DDPM", "deep-learning"]
-categories: ["生成模型", "深度学习"]
-research-areas: ["图像生成", "概率模型"]
+
+# 分类（研究领域）
+categories: ["生成模型"]
+
+# 会议/期刊
 venues: "NeurIPS 2020"
 
 # 论文元数据

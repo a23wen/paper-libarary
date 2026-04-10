@@ -10,12 +10,9 @@ enableGitInfo = true
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
-# 自定义分类系统
+# 分类系统 - 只使用 category（研究领域）
 [taxonomies]
-  tag = "tags"
   category = "categories"
-  venue = "venues"
-  research-area = "research-areas"
 
 # PaperMod 主题参数
 [params]
@@ -71,7 +68,7 @@ enableGitInfo = true
     distance = 1000
     threshold = 0.4
     minMatchCharLength = 2
-    keys = ["title", "permalink", "summary", "content", "tags", "categories"]
+    keys = ["title", "permalink", "summary", "content", "categories"]
 
 # 导航菜单
 [menu]
@@ -88,34 +85,22 @@ enableGitInfo = true
     weight = 20
 
   [[menu.main]]
-    identifier = "tags"
-    name = "🏷️ 标签"
-    url = "/tags/"
-    weight = 30
-
-  [[menu.main]]
     identifier = "categories"
     name = "📂 分类"
     url = "/categories/"
-    weight = 40
-
-  [[menu.main]]
-    identifier = "research-areas"
-    name = "🔬 研究领域"
-    url = "/research-areas/"
-    weight = 50
+    weight = 30
 
   [[menu.main]]
     identifier = "search"
     name = "🔍 搜索"
     url = "/search/"
-    weight = 60
+    weight = 40
 
   [[menu.main]]
     identifier = "archives"
     name = "📦 归档"
     url = "/archives/"
-    weight = 70
+    weight = 50
 
 # Markdown 配置
 [markup]

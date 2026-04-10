@@ -2,9 +2,11 @@
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
-tags: []
-categories: []
-research-areas: []
+
+# 分类（研究领域）- 只选择一个
+categories: [""]  # 例如：机器学习、计算机视觉、自然语言处理、强化学习等
+
+# 会议/期刊
 venues: ""
 
 # 论文元数据
