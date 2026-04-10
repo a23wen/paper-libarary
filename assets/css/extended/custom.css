@@ -1,5 +1,29 @@
 /* 自定义样式 */
 
+:root {
+    --paper-accent: rgb(82, 111, 82);
+    --paper-accent-soft: rgba(82, 111, 82, 0.12);
+    --paper-page-bg: rgb(247, 248, 246);
+    --paper-line: rgba(30, 30, 30, 0.08);
+    --paper-shadow: 0 10px 24px rgba(30, 30, 30, 0.06);
+}
+
+:root[data-theme="dark"] {
+    --paper-accent: rgb(138, 168, 132);
+    --paper-accent-soft: rgba(138, 168, 132, 0.14);
+    --paper-page-bg: rgb(28, 30, 28);
+    --paper-line: rgba(218, 218, 219, 0.1);
+    --paper-shadow: none;
+}
+
+.list {
+    background: var(--paper-page-bg);
+}
+
+.list .main {
+    max-width: min(1120px, calc(100vw - var(--gap) * 2));
+}
+
 /* 论文元数据卡片 */
 .paper-metadata {
     background: var(--entry);
@@ -422,15 +446,34 @@ table tr:hover {
 
 /* 首页阅读入口 */
 .paper-dashboard {
+    position: relative;
     margin: 0 0 calc(var(--gap) * 1.5);
+    padding: clamp(1.25rem, 2vw, 2rem);
+    overflow: hidden;
+    background: var(--entry);
+    border: 1px solid var(--paper-line);
+    border-radius: 8px;
+    box-shadow: var(--paper-shadow);
+}
+
+.paper-dashboard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-top: 4px solid var(--paper-accent);
+    opacity: 0.75;
 }
 
 .paper-dashboard-intro {
-    margin-bottom: 1.25rem;
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--paper-line);
 }
 
 .paper-dashboard-intro h1 {
-    font-size: 2rem;
+    font-size: 2.25rem;
     line-height: 1.25;
     margin-bottom: 0.5rem;
 }
@@ -447,23 +490,24 @@ table tr:hover {
 
 .paper-dashboard-stats {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
 }
 
 .paper-dashboard-stats div,
 .paper-dashboard-block {
-    background: var(--entry);
-    border: 1px solid var(--border);
+    background: var(--theme);
+    border: 1px solid var(--paper-line);
     border-radius: 8px;
 }
 
 .paper-dashboard-stats div {
-    padding: 1rem;
+    padding: 1.1rem;
+    border-left: 3px solid var(--paper-accent);
 }
 
 .paper-dashboard-stats strong {
     display: block;
-    color: var(--primary);
+    color: var(--paper-accent);
     font-size: 1.8rem;
     line-height: 1.1;
 }
@@ -474,16 +518,19 @@ table tr:hover {
 }
 
 .paper-dashboard-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: 1.15fr 0.9fr 1fr;
 }
 
 .paper-dashboard-block {
-    padding: 1rem;
+    padding: 1.1rem;
+    min-height: 190px;
 }
 
 .paper-dashboard-block h2 {
     font-size: 1.05rem;
     margin-bottom: 0.75rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--paper-line);
 }
 
 .paper-dashboard-link {
@@ -520,8 +567,9 @@ table tr:hover {
     gap: 0.35rem;
     padding: 0.4rem 0.7rem;
     border-radius: 6px;
-    background: var(--code-bg);
+    background: var(--paper-accent-soft);
     color: var(--content);
+    border: 1px solid var(--paper-line);
     text-decoration: none;
 }
 
@@ -534,6 +582,13 @@ table tr:hover {
 .paper-entry {
     display: grid;
     gap: 0.75rem;
+    box-shadow: 0 1px 0 var(--paper-line);
+}
+
+.paper-entry:hover {
+    border-color: var(--paper-line);
+    box-shadow: var(--paper-shadow);
+    transform: translateY(-1px);
 }
 
 .paper-entry-header h2 {
@@ -546,7 +601,8 @@ table tr:hover {
 }
 
 .paper-entry-title-link:hover {
-    text-decoration: underline;
+    color: var(--paper-accent);
+    text-decoration: none;
 }
 
 .paper-entry-meta {
@@ -562,6 +618,9 @@ table tr:hover {
     display: inline-flex;
     align-items: center;
     min-height: 28px;
+    padding: 0 0.55rem;
+    border-radius: 6px;
+    background: var(--code-bg);
 }
 
 .paper-entry-meta .status-badge,
@@ -593,9 +652,9 @@ table tr:hover {
 }
 
 .paper-entry-read {
-    background: var(--primary);
+    background: var(--paper-accent);
     color: var(--theme);
-    border-color: var(--primary);
+    border-color: var(--paper-accent);
 }
 
 /* 搜索结果 */
