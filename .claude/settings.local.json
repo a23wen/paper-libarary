@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(brew install:*)",
+      "Bash(/opt/homebrew/bin/hugo new:*)",
+      "Bash(/opt/homebrew/bin/hugo server:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m 'Initial commit: Hugo paper notes site with PaperMod theme:*)"
+    ]
+  }
+}

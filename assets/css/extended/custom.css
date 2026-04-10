@@ -1,0 +1,160 @@
+/* 自定义样式 */
+
+/* 论文元数据卡片 */
+.paper-metadata {
+    background: var(--entry);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--primary);
+}
+
+.paper-metadata h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.metadata-item {
+    margin: 0.5rem 0;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.metadata-label {
+    font-weight: 600;
+    min-width: 80px;
+    color: var(--secondary);
+}
+
+.metadata-value {
+    color: var(--content);
+}
+
+.metadata-value a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.metadata-value a:hover {
+    text-decoration: underline;
+}
+
+/* 星级评分样式 */
+.rating {
+    display: inline-flex;
+    gap: 0.2rem;
+    font-size: 1.2rem;
+    color: #ffd700;
+}
+
+.rating .star-empty {
+    color: #ddd;
+}
+
+/* 阅读状态标签 */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.status-reading {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.status-completed {
+    background-color: #10b981;
+    color: white;
+}
+
+.status-to-read {
+    background-color: #f59e0b;
+    color: white;
+}
+
+/* 论文列表增强 */
+.post-entry .entry-header h2 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.paper-meta-inline {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    margin-top: 0.5rem;
+}
+
+.paper-meta-inline span {
+    margin-right: 1rem;
+}
+
+/* 标签云样式优化 */
+.terms-tags a {
+    transition: transform 0.2s;
+}
+
+.terms-tags a:hover {
+    transform: translateY(-2px);
+}
+
+/* 引用样式 */
+blockquote {
+    border-left: 4px solid var(--primary);
+    padding-left: 1rem;
+    margin-left: 0;
+    font-style: italic;
+    color: var(--secondary);
+}
+
+/* 表格样式优化 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+table th {
+    background: var(--theme);
+    padding: 0.75rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+table tr:hover {
+    background: var(--code-bg);
+}
+
+/* 代码块优化 */
+.highlight {
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 768px) {
+    .paper-metadata {
+        padding: 1rem;
+    }
+
+    .metadata-item {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .metadata-label {
+        min-width: auto;
+    }
+}

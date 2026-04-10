@@ -1,0 +1,163 @@
+baseURL = 'https://example.org/'  # 部署时需要更新为实际的 GitHub Pages URL
+languageCode = 'zh-cn'
+title = '学术论文笔记'
+theme = 'PaperMod'
+
+# 启用 Git 信息
+enableGitInfo = true
+
+# 输出格式 - JSON 用于搜索索引
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# 自定义分类系统
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  venue = "venues"
+  research-area = "research-areas"
+
+# PaperMod 主题参数
+[params]
+  env = "production"
+  description = "学术论文阅读笔记与管理"
+  author = "Your Name"  # 请修改为你的名字
+
+  # 显示设置
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  comments = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = true
+  tocopen = true
+
+  # 资源设置
+  assets.disableHLJS = false
+  assets.disableFingerprinting = false
+
+  # 首页信息
+  [params.homeInfoParams]
+    Title = "学术论文管理与笔记 📚"
+    Content = """
+欢迎来到我的论文笔记站点！
+
+这里记录了我阅读的学术论文、研究笔记和思考总结。
+
+- 📖 按研究领域分类组织
+- 🏷️ 支持标签和多维度筛选
+- 🔍 全站搜索功能
+- ⭐ 阅读进度和评分追踪
+"""
+
+  # 社交链接（可选）
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/yourusername"  # 请修改为你的 GitHub
+
+  # 搜索配置 - Fuse.js
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 2
+    keys = ["title", "permalink", "summary", "content", "tags", "categories"]
+
+# 导航菜单
+[menu]
+  [[menu.main]]
+    identifier = "papers"
+    name = "📄 论文"
+    url = "/papers/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "notes"
+    name = "📝 笔记"
+    url = "/notes/"
+    weight = 20
+
+  [[menu.main]]
+    identifier = "tags"
+    name = "🏷️ 标签"
+    url = "/tags/"
+    weight = 30
+
+  [[menu.main]]
+    identifier = "categories"
+    name = "📂 分类"
+    url = "/categories/"
+    weight = 40
+
+  [[menu.main]]
+    identifier = "research-areas"
+    name = "🔬 研究领域"
+    url = "/research-areas/"
+    weight = 50
+
+  [[menu.main]]
+    identifier = "search"
+    name = "🔍 搜索"
+    url = "/search/"
+    weight = 60
+
+  [[menu.main]]
+    identifier = "archives"
+    name = "📦 归档"
+    url = "/archives/"
+    weight = 70
+
+# Markdown 配置
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = false
+    style = 'monokai'
+    tabWidth = 4
+
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # 允许 HTML 标签
+
+# 隐私设置
+[privacy]
+  [privacy.vimeo]
+    disabled = false
+    simple = true
+
+  [privacy.x]
+    disabled = false
+    enableDNT = true
+    simple = true
+
+  [privacy.instagram]
+    disabled = false
+    simple = true
+
+  [privacy.youtube]
+    disabled = false
+    privacyEnhanced = true
+
+# 服务配置
+[services]
+  [services.instagram]
+    disableInlineCSS = true
+  [services.x]
+    disableInlineCSS = true
