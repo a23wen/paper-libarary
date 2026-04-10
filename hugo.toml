@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'  # 部署时需要更新为实际的 GitHub Pages URL
+baseURL = 'https://a23wen.github.io/paper-libarary/'
 languageCode = 'zh-cn'
 title = '学术论文笔记'
 theme = 'PaperMod'
