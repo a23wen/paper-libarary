@@ -32,9 +32,8 @@
     <div class="terms-tags" style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
       {{ $currentCategory := .Title }}
       {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-        {{ $categoryURL := printf "/categories/%s/" ($name | urlize) }}
         {{ $isActive := eq $name $currentCategory }}
-        <a href="{{ $categoryURL | relURL }}"
+        <a href="{{ printf "categories/%s/" ($name | urlize) | relURL }}"
            style="display: inline-block; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.9rem; text-decoration: none; transition: all 0.2s;
                   {{ if $isActive }}
                     background: var(--primary); color: var(--theme); font-weight: 600; transform: translateY(-2px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -94,9 +93,8 @@
   {{/* 所有分类列表页面 */}}
   <ul class="terms-tags">
     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-      {{ $categoryURL := printf "/categories/%s/" ($name | urlize) }}
       <li>
-        <a href="{{ $categoryURL | relURL }}">
+        <a href="{{ printf "categories/%s/" ($name | urlize) | relURL }}">
           {{ $name }}
           <sup><strong><sup>{{ len $taxonomy }}</sup></strong></sup>
         </a>
