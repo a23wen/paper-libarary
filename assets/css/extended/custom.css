@@ -258,15 +258,41 @@ table tr:hover {
     white-space: nowrap;
 }
 
-@media screen and (min-width: 1180px) {
+@media screen and (min-width: 960px) {
+    .paper-single {
+        width: min(1120px, calc(100vw - var(--gap) * 2));
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .paper-single .post-header,
+    .paper-single .post-footer {
+        max-width: calc(var(--main-width) + var(--gap) * 2);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .paper-reader-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 280px;
+        align-items: start;
+        gap: 2rem;
+    }
+
+    .paper-reader-main {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
     .paper-reading-toc {
-        position: fixed;
+        grid-column: 2;
+        grid-row: 1;
+        position: sticky;
         top: 88px;
-        right: max(24px, calc((100vw - 1160px) / 2));
-        width: 260px;
+        width: auto;
         max-height: calc(100vh - 120px);
         overflow: auto;
-        z-index: 3;
+        margin-bottom: 0;
     }
 
     .paper-reading-toc .toc {
