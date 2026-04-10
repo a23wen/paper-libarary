@@ -1,6 +1,6 @@
 baseURL = 'https://a23wen.github.io/paper-libarary/'
 languageCode = 'zh-cn'
-title = '学术论文笔记'
+title = "awen's paper libarary"
 theme = 'PaperMod'
 
 # 启用 Git 信息
