@@ -143,6 +143,67 @@ table tr:hover {
     overflow: hidden;
 }
 
+/* 分类标签快速切换栏 */
+.category-switcher {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--entry);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+}
+
+.category-switcher-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--content);
+}
+
+.category-switcher-title svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    color: var(--primary);
+}
+
+.category-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.category-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    background: var(--code-bg);
+    color: var(--content);
+}
+
+.category-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-tag.active {
+    background: var(--primary);
+    color: var(--theme);
+    font-weight: 600;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-tag .count {
+    opacity: 0.7;
+    font-size: 0.85em;
+    margin-left: 0.25rem;
+}
+
 /* 响应式调整 */
 @media screen and (max-width: 768px) {
     .paper-metadata {
@@ -156,5 +217,18 @@ table tr:hover {
 
     .metadata-label {
         min-width: auto;
+    }
+
+    .category-switcher {
+        padding: 1rem;
+    }
+
+    .category-tags {
+        gap: 0.5rem;
+    }
+
+    .category-tag {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.85rem;
     }
 }
