@@ -1,0 +1,66 @@
+{{- $paper := . -}}
+{{- $authors := $paper.Params.authors -}}
+{{- $categories := $paper.Params.categories -}}
+{{- $venue := $paper.Params.venues -}}
+{{- $year := $paper.Params.year -}}
+{{- $status := $paper.Params.status -}}
+{{- $rating := $paper.Params.rating -}}
+
+<article class="post-entry paper-entry">
+  <header class="entry-header paper-entry-header">
+    <h2 class="entry-hint-parent">
+      <a class="paper-entry-title-link" href="{{ $paper.Permalink }}">{{ $paper.Title }}</a>
+    </h2>
+  </header>
+
+  <div class="paper-entry-meta">
+    {{- if $categories -}}
+    <span>{{ delimit $categories " / " }}</span>
+    {{- end -}}
+    {{- if $year -}}
+    <span>{{ $year }}</span>
+    {{- end -}}
+    {{- if $venue -}}
+    <span>{{ $venue }}</span>
+    {{- end -}}
+    {{- if $status -}}
+    <span>{{ partial "paper-status.html" $status }}</span>
+    {{- end -}}
+    {{- if and $rating (gt $rating 0) -}}
+    <span>{{ partial "rating.html" $rating }}</span>
+    {{- end -}}
+  </div>
+
+  {{- if $authors -}}
+  <div class="paper-entry-authors">
+    {{- range $index, $author := first 3 $authors -}}
+      {{- if $index }}, {{ end -}}{{ $author }}
+    {{- end -}}
+    {{- if gt (len $authors) 3 }} 等{{ end -}}
+  </div>
+  {{- end -}}
+
+  {{- if (ne ($paper.Param "hideSummary") true) -}}
+  <div class="entry-content paper-entry-summary">
+    <p>{{ $paper.Summary | plainify | htmlUnescape }}{{ if $paper.Truncated }}...{{ end }}</p>
+  </div>
+  {{- end -}}
+
+  <footer class="paper-entry-footer">
+    <a class="paper-entry-read" href="{{ $paper.Permalink }}">阅读笔记</a>
+    <div class="paper-entry-actions" aria-label="论文相关链接">
+      {{- with $paper.Params.paper_url -}}
+      <a href="{{ . }}" target="_blank" rel="noopener noreferrer">论文</a>
+      {{- end -}}
+      {{- with $paper.Params.arxiv_url -}}
+      <a href="{{ . }}" target="_blank" rel="noopener noreferrer">PDF</a>
+      {{- end -}}
+      {{- with $paper.Params.code_url -}}
+      <a href="{{ . }}" target="_blank" rel="noopener noreferrer">代码</a>
+      {{- end -}}
+      {{- with $paper.Params.video_url -}}
+      <a href="{{ . }}" target="_blank" rel="noopener noreferrer">视频</a>
+      {{- end -}}
+    </div>
+  </footer>
+</article>

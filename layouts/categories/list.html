@@ -21,29 +21,23 @@
   {{/* 单个分类页面 - 显示分类标签 + 论文列表 */}}
 
   {{/* 分类标签栏 */}}
-  <div style="margin: 2rem 0; padding: 1.5rem; background: var(--entry); border-radius: 8px;">
-    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-      <svg style="width: 20px; height: 20px; margin-right: 8px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <div class="category-switcher">
+    <div class="category-switcher-title">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
       </svg>
-      <span style="font-weight: 600; font-size: 1.1rem;">快速切换分类</span>
+      <span>快速切换分类</span>
     </div>
 
-    <div class="terms-tags" style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+    <div class="category-tags">
       {{ $currentCategory := .Title }}
       {{ $baseURL := .Site.BaseURL }}
       {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
         {{ $isActive := eq $name $currentCategory }}
         {{ $categoryPath := printf "%scategories/%s/" $baseURL ($name | urlize) }}
-        <a href="{{ $categoryPath }}"
-           style="display: inline-block; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.9rem; text-decoration: none; transition: all 0.2s;
-                  {{ if $isActive }}
-                    background: var(--primary); color: var(--theme); font-weight: 600; transform: translateY(-2px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                  {{ else }}
-                    background: var(--code-bg); color: var(--content);
-                  {{ end }}">
+        <a class="category-tag{{ if $isActive }} active{{ end }}" href="{{ $categoryPath }}">
           {{ $name }}
-          <span style="opacity: 0.7; font-size: 0.85em;">({{ len $taxonomy }})</span>
+          <span class="count">({{ len $taxonomy }})</span>
         </a>
       {{ end }}
     </div>
@@ -57,37 +51,7 @@
 
   {{- range $pages.ByPublishDate.Reverse }}
   {{- if eq .Type "papers" }}
-  <article class="post-entry">
-    {{ $class := "entry-cover" }}
-    {{- $image := (.Resources.ByType "image").GetMatch "*cover*" }}
-    {{- if not $image }}
-      {{- $image = (.Resources.ByType "image").GetMatch "{*featured*,*thumbnail*}" }}
-    {{- end }}
-    {{- if $image }}
-    <figure class="{{ $class }}">
-      {{- $sizes := "(min-width: 768px) 720px, 100vw" }}
-      {{- $image := $image.Resize "720x" }}
-      <img loading="lazy" src="{{ ($image).RelPermalink }}" alt="{{ .Title }}" sizes="{{ $sizes }}" />
-    </figure>
-    {{- end }}
-    <header class="entry-header">
-      <h2 class="entry-hint-parent">{{ .Title }}</h2>
-    </header>
-    {{- if (.Param "ShowPostMetadata") }}
-    <div class="entry-meta">
-      {{- partial "post_meta.html" . -}}
-    </div>
-    {{- end }}
-    <div class="entry-content">
-      <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-    </div>
-    {{- if not (.Param "hideMeta") }}
-    <footer class="entry-footer">
-      {{- partial "post_meta.html" . -}}
-    </footer>
-    {{- end }}
-    <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-  </article>
+  {{- partial "paper-card.html" . }}
   {{- end }}
   {{- end }}
 

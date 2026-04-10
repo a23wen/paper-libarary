@@ -1,0 +1,10 @@
+{{- $status := . -}}
+{{- if eq $status "reading" -}}
+<span class="status-badge status-reading">正在阅读</span>
+{{- else if eq $status "completed" -}}
+<span class="status-badge status-completed">已完成</span>
+{{- else if eq $status "to-read" -}}
+<span class="status-badge status-to-read">待阅读</span>
+{{- else if $status -}}
+<span class="status-badge">{{ $status }}</span>
+{{- end -}}

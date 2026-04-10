@@ -1,0 +1,18 @@
+{{- $.Scratch.Add "index" slice -}}
+{{- range site.RegularPages -}}
+    {{- if and (not .Params.searchHidden) (ne .Layout `archives`) (ne .Layout `search`) }}
+    {{- $.Scratch.Add "index" (dict
+        "title" .Title
+        "content" .Plain
+        "permalink" .Permalink
+        "summary" (.Summary | plainify | htmlUnescape)
+        "categories" (.Params.categories | default (slice))
+        "authors" (.Params.authors | default (slice))
+        "venues" (.Params.venues | default "")
+        "year" (.Params.year | default "")
+        "status" (.Params.status | default "")
+        "rating" (.Params.rating | default 0)
+    ) -}}
+    {{- end }}
+{{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}

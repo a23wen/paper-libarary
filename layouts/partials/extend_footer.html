@@ -1,0 +1,7 @@
+{{- $reader := resources.Get "js/paper-reader.js" | resources.Minify -}}
+{{- if not site.Params.assets.disableFingerprinting -}}
+{{- $reader = $reader | fingerprint -}}
+<script defer crossorigin="anonymous" src="{{ $reader.RelPermalink }}" integrity="{{ $reader.Data.Integrity }}"></script>
+{{- else -}}
+<script defer crossorigin="anonymous" src="{{ $reader.RelPermalink }}"></script>
+{{- end -}}

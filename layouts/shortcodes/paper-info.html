@@ -9,66 +9,76 @@
 {{- $status := .Page.Params.status -}}
 {{- $rating := .Page.Params.rating -}}
 {{- $read_date := .Page.Params.read_date -}}
+{{- $categories := .Page.Params.categories -}}
+{{- $summary := .Page.Params.summary -}}
 
-<div class="paper-metadata">
-    <h3>📄 论文信息</h3>
+<section class="paper-metadata paper-overview" aria-labelledby="paper-overview-title">
+    <div class="paper-overview-header">
+        <div>
+            <p class="paper-overview-kicker">论文概览</p>
+            <h2 id="paper-overview-title">快速判断这篇论文</h2>
+        </div>
+        <div class="paper-actions" aria-label="论文快捷链接">
+            {{- if $paper_url -}}<a href="{{ $paper_url }}" target="_blank" rel="noopener noreferrer">论文</a>{{- end -}}
+            {{- if $arxiv_url -}}<a href="{{ $arxiv_url }}" target="_blank" rel="noopener noreferrer">PDF</a>{{- end -}}
+            {{- if $code_url -}}<a href="{{ $code_url }}" target="_blank" rel="noopener noreferrer">代码</a>{{- end -}}
+            {{- if $slides_url -}}<a href="{{ $slides_url }}" target="_blank" rel="noopener noreferrer">幻灯片</a>{{- end -}}
+            {{- if $video_url -}}<a href="{{ $video_url }}" target="_blank" rel="noopener noreferrer">视频</a>{{- end -}}
+        </div>
+    </div>
+
+    {{- if $summary -}}
+    <p class="paper-overview-summary">{{ $summary }}</p>
+    {{- end -}}
+
+    <div class="paper-overview-grid">
+        {{- if $categories -}}
+        <div class="metadata-item">
+            <span class="metadata-label">领域</span>
+            <span class="metadata-value">{{ delimit $categories " / " }}</span>
+        </div>
+        {{- end -}}
+
+        {{- if $year -}}
+        <div class="metadata-item">
+            <span class="metadata-label">年份</span>
+            <span class="metadata-value">{{ $year }}</span>
+        </div>
+        {{- end -}}
+
+        {{- if $venue -}}
+        <div class="metadata-item">
+            <span class="metadata-label">发表于</span>
+            <span class="metadata-value">{{ $venue }}</span>
+        </div>
+        {{- end -}}
+
+        {{- if $status -}}
+        <div class="metadata-item">
+            <span class="metadata-label">状态</span>
+            <span class="metadata-value">{{ partial "paper-status.html" $status }}</span>
+        </div>
+        {{- end -}}
+
+        {{- if and $rating (gt $rating 0) -}}
+        <div class="metadata-item">
+            <span class="metadata-label">评分</span>
+            <span class="metadata-value">{{ partial "rating.html" $rating }}</span>
+        </div>
+        {{- end -}}
+
+        {{- if $read_date -}}
+        <div class="metadata-item">
+            <span class="metadata-label">阅读日期</span>
+            <span class="metadata-value">{{ $read_date }}</span>
+        </div>
+        {{- end -}}
+    </div>
 
     {{- if $authors -}}
-    <div class="metadata-item">
-        <span class="metadata-label">作者：</span>
-        <span class="metadata-value">{{ delimit $authors ", " }}</span>
-    </div>
+    <details class="paper-authors">
+        <summary>作者：{{ range $index, $author := first 3 $authors }}{{ if $index }}, {{ end }}{{ $author }}{{ end }}{{ if gt (len $authors) 3 }} 等{{ end }}</summary>
+        <p>{{ delimit $authors ", " }}</p>
+    </details>
     {{- end -}}
-
-    {{- if $year -}}
-    <div class="metadata-item">
-        <span class="metadata-label">年份：</span>
-        <span class="metadata-value">{{ $year }}</span>
-    </div>
-    {{- end -}}
-
-    {{- if $venue -}}
-    <div class="metadata-item">
-        <span class="metadata-label">发表于：</span>
-        <span class="metadata-value">{{ $venue }}</span>
-    </div>
-    {{- end -}}
-
-    {{- if or $paper_url $arxiv_url $code_url $slides_url $video_url -}}
-    <div class="metadata-item">
-        <span class="metadata-label">链接：</span>
-        <span class="metadata-value">
-            {{- if $paper_url -}}<a href="{{ $paper_url }}" target="_blank">📜 论文</a>&nbsp;&nbsp;{{- end -}}
-            {{- if $arxiv_url -}}<a href="{{ $arxiv_url }}" target="_blank">📚 arXiv</a>&nbsp;&nbsp;{{- end -}}
-            {{- if $code_url -}}<a href="{{ $code_url }}" target="_blank">💻 代码</a>&nbsp;&nbsp;{{- end -}}
-            {{- if $slides_url -}}<a href="{{ $slides_url }}" target="_blank">🎞️ 幻灯片</a>&nbsp;&nbsp;{{- end -}}
-            {{- if $video_url -}}<a href="{{ $video_url }}" target="_blank">🎥 视频</a>{{- end -}}
-        </span>
-    </div>
-    {{- end -}}
-
-    {{- if $status -}}
-    <div class="metadata-item">
-        <span class="metadata-label">阅读状态：</span>
-        <span class="metadata-value">
-            {{- if eq $status "reading" -}}<span class="status-badge status-reading">正在阅读</span>{{- end -}}
-            {{- if eq $status "completed" -}}<span class="status-badge status-completed">已完成</span>{{- end -}}
-            {{- if eq $status "to-read" -}}<span class="status-badge status-to-read">待阅读</span>{{- end -}}
-        </span>
-    </div>
-    {{- end -}}
-
-    {{- if and $rating (gt $rating 0) -}}
-    <div class="metadata-item">
-        <span class="metadata-label">评分：</span>
-        <span class="metadata-value">{{ partial "rating.html" $rating }}</span>
-    </div>
-    {{- end -}}
-
-    {{- if $read_date -}}
-    <div class="metadata-item">
-        <span class="metadata-label">阅读日期：</span>
-        <span class="metadata-value">{{ $read_date }}</span>
-    </div>
-    {{- end -}}
-</div>
+</section>

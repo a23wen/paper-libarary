@@ -1,0 +1,64 @@
+{{- $papers := where site.RegularPages "Type" "papers" -}}
+{{- $completed := where $papers "Params.status" "completed" -}}
+{{- $toRead := where $papers "Params.status" "to-read" -}}
+
+<section class="paper-dashboard" aria-labelledby="paper-dashboard-title">
+  <div class="paper-dashboard-intro">
+    <p class="paper-dashboard-kicker">论文阅读工作台</p>
+    <h1 id="paper-dashboard-title">快速找到下一篇要读的论文</h1>
+    <p>按领域浏览、继续整理待读清单，或回看最近完成的笔记。</p>
+  </div>
+
+  <div class="paper-dashboard-stats" aria-label="论文统计">
+    <div>
+      <strong>{{ len $papers }}</strong>
+      <span>全部论文</span>
+    </div>
+    <div>
+      <strong>{{ len $completed }}</strong>
+      <span>已完成</span>
+    </div>
+    <div>
+      <strong>{{ len $toRead }}</strong>
+      <span>待读</span>
+    </div>
+  </div>
+
+  <div class="paper-dashboard-grid">
+    <section class="paper-dashboard-block" aria-labelledby="recent-completed-title">
+      <h2 id="recent-completed-title">最近完成</h2>
+      {{- range first 3 ($completed.ByDate.Reverse) }}
+      <a class="paper-dashboard-link" href="{{ .Permalink }}">
+        <span>{{ .Title }}</span>
+        <small>{{ with .Params.venues }}{{ . }}{{ end }}{{ with .Params.year }} · {{ . }}{{ end }}</small>
+      </a>
+      {{- else }}
+      <p class="paper-dashboard-empty">还没有已完成论文。</p>
+      {{- end }}
+    </section>
+
+    <section class="paper-dashboard-block" aria-labelledby="to-read-title">
+      <h2 id="to-read-title">待读论文</h2>
+      {{- range first 3 ($toRead.ByDate.Reverse) }}
+      <a class="paper-dashboard-link" href="{{ .Permalink }}">
+        <span>{{ .Title }}</span>
+        <small>{{ with .Params.categories }}{{ delimit . " / " }}{{ end }}</small>
+      </a>
+      {{- else }}
+      <p class="paper-dashboard-empty">待读清单为空。</p>
+      {{- end }}
+    </section>
+
+    <section class="paper-dashboard-block" aria-labelledby="browse-category-title">
+      <h2 id="browse-category-title">按领域浏览</h2>
+      <div class="paper-dashboard-tags">
+        {{- range $name, $taxonomy := site.Taxonomies.categories }}
+        {{- $categoryPath := printf "%scategories/%s/" site.BaseURL ($name | urlize) }}
+        <a href="{{ $categoryPath }}">{{ $name }} <span>{{ len $taxonomy }}</span></a>
+        {{- else }}
+        <p class="paper-dashboard-empty">暂无分类。</p>
+        {{- end }}
+      </div>
+    </section>
+  </div>
+</section>
