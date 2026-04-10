@@ -1,11 +1,11 @@
 {{- $rating := . -}}
 <span class="rating" aria-label="评分 {{ $rating }}/5">
-    <span aria-hidden="true">
+    <span class="rating-stars" aria-hidden="true">
     {{- range (seq 5) -}}
         {{- if le . $rating -}}
-            <span class="star-filled">⭐</span>
+            <span class="star-filled">★</span>
         {{- else -}}
-            <span class="star-empty">☆</span>
+            <span class="star-empty">★</span>
         {{- end -}}
     {{- end -}}
     </span>

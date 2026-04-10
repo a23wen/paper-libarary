@@ -15,19 +15,28 @@
 
   <div class="paper-entry-meta">
     {{- if $categories -}}
-    <span>{{ delimit $categories " / " }}</span>
+    <span class="meta-category">{{ delimit $categories " / " }}</span>
     {{- end -}}
+
+    <span class="meta-divider">·</span>
+
     {{- if $year -}}
-    <span>{{ $year }}</span>
+    <span class="meta-year">{{ $year }}</span>
     {{- end -}}
+
     {{- if $venue -}}
-    <span>{{ $venue }}</span>
+    <span class="meta-divider">·</span>
+    <span class="meta-venue">{{ $venue }}</span>
     {{- end -}}
+
     {{- if $status -}}
-    <span>{{ partial "paper-status.html" $status }}</span>
+    <span class="meta-divider">·</span>
+    {{ partial "paper-status.html" $status }}
     {{- end -}}
+
     {{- if and $rating (gt $rating 0) -}}
-    <span>{{ partial "rating.html" $rating }}</span>
+    <span class="meta-divider">·</span>
+    {{ partial "rating.html" $rating }}
     {{- end -}}
   </div>
 
