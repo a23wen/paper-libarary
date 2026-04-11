@@ -5,7 +5,18 @@
       "Bash(/opt/homebrew/bin/hugo new:*)",
       "Bash(/opt/homebrew/bin/hugo server:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m 'Initial commit: Hugo paper notes site with PaperMod theme:*)"
+      "Bash(git commit -m 'Initial commit: Hugo paper notes site with PaperMod theme:*)",
+      "Bash(/opt/homebrew/bin/hugo:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(git commit:*)",
+      "Bash(find:*)",
+      "Bash(git rm:*)",
+      "WebFetch(domain:arxiv.org)",
+      "Bash(chmod +x:*)",
+      "Bash(wc:*)",
+      "Bash(gh run:*)"
     ]
   }
 }
