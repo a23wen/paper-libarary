@@ -9,7 +9,7 @@
         </svg>
     </h1>
     <div class="post-description">
-        输入论文标题、作者、会议、年份、分类或阅读状态来检索笔记。
+        输入论文标题、作者、会议、年份或分类来检索笔记。
     </div>
     {{- if not (.Param "hideMeta") }}
     <div class="post-meta">
@@ -19,9 +19,9 @@
 </header>
 
 <div id="searchbox" class="paper-searchbox">
-    <input id="searchInput" autofocus placeholder="{{ .Params.placeholder | default "搜索 DeepSeek / NeurIPS / 自然语言处理 / completed" }}"
+    <input id="searchInput" autofocus placeholder="{{ .Params.placeholder | default "搜索 DeepSeek / NeurIPS / 自然语言处理 / 2025" }}"
         aria-label="搜索论文和笔记" type="search" autocomplete="off" maxlength="64">
-    <p class="paper-search-hint">支持标题、摘要、分类、作者、会议、年份和状态。</p>
+    <p class="paper-search-hint">支持标题、摘要、分类、作者、会议和年份。</p>
     <ul id="searchResults" aria-label="搜索结果"></ul>
 </div>
 

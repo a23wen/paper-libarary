@@ -109,52 +109,6 @@
     font-weight: 500;
 }
 
-/* 阅读状态标签 - 轻量化设计 */
-.status-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    line-height: 1.3;
-}
-
-/* 浅色模式 - 边框 + 半透明背景 */
-.status-reading {
-    background-color: rgba(59, 130, 246, 0.12);
-    color: rgb(29, 78, 216);
-    border: 1px solid rgba(59, 130, 246, 0.3);
-}
-
-.status-completed {
-    background-color: rgba(16, 185, 129, 0.12);
-    color: rgb(5, 150, 105);
-    border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.status-to-read {
-    background-color: rgba(245, 158, 11, 0.12);
-    color: rgb(217, 119, 6);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-}
-
-/* 暗色模式状态徽章 */
-:root[data-theme="dark"] .status-reading {
-    background-color: rgba(59, 130, 246, 0.2);
-    color: rgb(96, 165, 250);
-}
-
-:root[data-theme="dark"] .status-completed {
-    background-color: rgba(16, 185, 129, 0.2);
-    color: rgb(52, 211, 153);
-}
-
-:root[data-theme="dark"] .status-to-read {
-    background-color: rgba(245, 158, 11, 0.2);
-    color: rgb(251, 191, 36);
-}
-
 /* 论文元数据布局优化 */
 .paper-entry-meta {
     display: flex;
@@ -185,11 +139,6 @@
     .paper-entry-meta {
         font-size: 0.82rem;
         gap: 0.3rem 0.4rem;
-    }
-
-    .status-badge {
-        padding: 0.12rem 0.4rem;
-        font-size: 0.7rem;
     }
 
     .rating {
@@ -537,7 +486,7 @@ table tr:hover {
     margin: 0.5rem 0 0;
 }
 
-/* 首页阅读入口 */
+/* 首页入口 */
 .paper-dashboard {
     position: relative;
     margin: 0 0 calc(var(--gap) * 1.5);
@@ -582,7 +531,7 @@ table tr:hover {
 }
 
 .paper-dashboard-stats {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-bottom: 1.25rem;
 }
 
@@ -611,7 +560,7 @@ table tr:hover {
 }
 
 .paper-dashboard-grid {
-    grid-template-columns: 1.15fr 0.9fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
 .paper-dashboard-block {
@@ -704,10 +653,6 @@ table tr:hover {
 }
 
 /* paper-entry-meta 已在上方统一定义 */
-
-.paper-overview-grid .status-badge {
-    margin-left: 0;
-}
 
 .paper-entry-authors {
     color: var(--secondary);
@@ -1034,4 +979,3 @@ table tr:hover {
         margin-bottom: var(--content-gap);
     }
 }
-

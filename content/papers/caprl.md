@@ -16,10 +16,7 @@ paper_url: "https://arxiv.org/abs/2509.22647"
 arxiv_url: "https://arxiv.org/pdf/2509.22647"
 code_url: "https://github.com/InternLM/CapRL"
 
-# 阅读状态
-status: "completed"
 rating: 5
-read_date: "2026-04-20"
 
 summary: "CapRL 尝试把 RLVR 从有标准答案的任务扩展到开放式 image captioning。它把 caption 质量重新定义成“是否足以支撑一个不看图的 LLM 仅凭 caption 回答图像相关多选题”，并据此设计了解耦两阶段 reward。结果显示，CapRL-3B 在 Prism 评价下逼近 Qwen2.5-VL-72B，还能生成 CapRL-5M 高质量 caption 数据，在 12 个预训练 benchmark 上持续优于 ShareGPT4V-1M 和 DenseFusion-1M。"
 ---

@@ -16,10 +16,7 @@ paper_url: "https://arxiv.org/abs/1706.03762"
 arxiv_url: "https://arxiv.org/abs/1706.03762"
 code_url: "https://github.com/tensorflow/tensor2tensor"
 
-# 阅读状态
-status: "completed"
 rating: 5
-read_date: "2024-01-15"
 
 summary: "提出了完全基于注意力机制的 Transformer 架构，摒弃了循环和卷积结构，在机器翻译任务上取得了 SOTA 性能，成为现代 NLP 的基石。"
 ---

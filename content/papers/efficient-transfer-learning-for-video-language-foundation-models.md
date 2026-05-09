@@ -16,10 +16,7 @@ paper_url: "https://arxiv.org/abs/2411.11223"
 arxiv_url: "https://arxiv.org/pdf/2411.11223"
 code_url: "https://github.com/chenhaoxing/ETL4Video"
 
-# 阅读状态
-status: "completed"
 rating: 4
-read_date: "2026-05-08"
 
 summary: "这篇论文提出 MSTA，一种面向视频-语言基础模型的参数高效迁移方法。它在 ViCLIP 的高层文本和视频编码器中插入共享的多模态时空 adapter，用少量可训练参数同时保留预训练泛化能力和学习视频动作识别的任务特征，并通过 LLM 生成的时空动作描述构造一致性约束来缓解小样本迁移中的过拟合。"
 ---

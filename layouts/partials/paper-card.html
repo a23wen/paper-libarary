@@ -3,7 +3,6 @@
 {{- $categories := $paper.Params.categories -}}
 {{- $venue := $paper.Params.venues -}}
 {{- $year := $paper.Params.year -}}
-{{- $status := $paper.Params.status -}}
 {{- $rating := $paper.Params.rating -}}
 
 <article class="post-entry paper-entry">
@@ -27,11 +26,6 @@
     {{- if $venue -}}
     <span class="meta-divider">·</span>
     <span class="meta-venue">{{ $venue }}</span>
-    {{- end -}}
-
-    {{- if $status -}}
-    <span class="meta-divider">·</span>
-    {{ partial "paper-status.html" $status }}
     {{- end -}}
 
     {{- if and $rating (gt $rating 0) -}}

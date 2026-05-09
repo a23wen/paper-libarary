@@ -16,10 +16,7 @@ paper_url: "https://arxiv.org/abs/2508.12790"
 arxiv_url: "https://arxiv.org/pdf/2508.12790"
 code_url: "https://huggingface.co/inclusionAI/Rubicon-Preview"
 
-# 阅读状态
-status: "completed"
 rating: 5
-read_date: "2026-04-15"
 
 summary: "论文提出 Rubicon，用 rubric anchors 把强化学习从数学、代码这类可验证任务扩展到创意写作、情感表达和人文学科等开放任务。作者构建了一个包含 10,000+ rubrics 的大规模 reward system，并通过两阶段 RL、central-quantile 数据筛选、reward hacking 防御 rubric 和 stage-wise 训练，让 Qwen3-30B-A3B 仅用 5K 训练样本就在开放任务上平均提升 5.2%，同时基本保持通用与推理能力。"
 ---

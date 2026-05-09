@@ -16,10 +16,7 @@ paper_url: "https://arxiv.org/abs/2501.12948"
 arxiv_url: "https://arxiv.org/pdf/2501.12948"
 code_url: "https://huggingface.co/deepseek-ai"
 
-# 阅读状态
-status: "completed"
 rating: 5
-read_date: "2026-04-10"
 
 summary: "提出 DeepSeek-R1-Zero 与 DeepSeek-R1，展示大语言模型可以通过可验证任务上的大规模强化学习自发形成长链推理、反思与验证能力，并进一步通过多阶段训练和蒸馏把强推理能力迁移到更小模型。"
 ---

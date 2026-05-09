@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Hugo-based academic paper notes website deployed to GitHub Pages. The site manages paper metadata, reading status, ratings, and personal summaries organized by research area.
+This is a Hugo-based academic paper notes website deployed to GitHub Pages. The site manages paper metadata, ratings, and personal summaries organized by research area.
 
 **Live Site**: https://a23wen.github.io/paper-libarary/
 
@@ -86,10 +86,7 @@ paper_url: "https://..."
 arxiv_url: "https://..."
 code_url: "https://..."
 
-# Reading tracking
-status: "completed"  # reading | completed | to-read
 rating: 5  # 1-5
-read_date: "2024-04-10"
 
 summary: "Brief summary for listings"
 ```
@@ -102,7 +99,7 @@ summary: "Brief summary for listings"
 
 - **`layouts/partials/rating.html`**: Renders star rating (⭐ for filled, ☆ for empty).
 
-- **`assets/css/extended/custom.css`**: Extends PaperMod styles. Includes `.paper-metadata`, `.rating`, `.status-badge`, and `.category-tag` classes.
+- **`assets/css/extended/custom.css`**: Extends PaperMod styles. Includes `.paper-metadata`, `.rating`, and `.category-tag` classes.
 
 ### Deployment Flow
 

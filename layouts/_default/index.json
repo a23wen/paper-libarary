@@ -10,7 +10,6 @@
         "authors" (.Params.authors | default (slice))
         "venues" (.Params.venues | default "")
         "year" (.Params.year | default "")
-        "status" (.Params.status | default "")
         "rating" (.Params.rating | default 0)
     ) -}}
     {{- end }}

@@ -1,6 +1,6 @@
 # paper-libarary
 
-基于 Hugo + PaperMod 的学术论文阅读笔记站点，用于记录论文元数据、阅读状态、评分和个人总结。
+基于 Hugo + PaperMod 的学术论文阅读笔记站点，用于记录论文元数据、评分和个人总结。
 
 当前站点地址：
 
@@ -12,7 +12,7 @@
 - **智能分类**：自动匹配现有分类或创建新分类，无需手动维护
 - **论文笔记**：使用 `content/papers/` 管理论文 Markdown 内容
 - **分类浏览**：当前 Hugo taxonomy 只启用 `categories`，用于按研究领域组织论文
-- **论文元数据卡片**：通过 `{{< paper-info >}}` shortcode 展示作者、年份、会议/期刊、链接、阅读状态和评分
+- **论文元数据卡片**：通过 `{{< paper-info >}}` shortcode 展示作者、年份、会议/期刊、链接和评分
 - **全站搜索**：使用 PaperMod 内置 Fuse.js 搜索，依赖 Hugo 生成首页 JSON 索引
 - **归档页面**：通过 PaperMod 的 `archives` layout 展示内容归档
 - **自动部署**：通过 GitHub Actions 构建 Hugo 站点并部署到 GitHub Pages
@@ -137,9 +137,7 @@ hugo new papers/your-paper-title.md
 - `authors`：作者列表
 - `year`：论文发表年份
 - `paper_url`、`arxiv_url`、`code_url`、`slides_url`、`video_url`：相关链接
-- `status`：阅读状态，可用值为 `reading`、`completed`、`to-read`
 - `rating`：评分，建议使用 `0` 到 `5`
-- `read_date`：阅读日期
 - `summary`：摘要，会用于列表页和搜索
 
 在论文正文中加入元数据卡片：

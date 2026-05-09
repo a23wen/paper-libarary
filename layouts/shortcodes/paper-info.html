@@ -6,9 +6,7 @@
 {{- $code_url := .Page.Params.code_url -}}
 {{- $slides_url := .Page.Params.slides_url -}}
 {{- $video_url := .Page.Params.video_url -}}
-{{- $status := .Page.Params.status -}}
 {{- $rating := .Page.Params.rating -}}
-{{- $read_date := .Page.Params.read_date -}}
 {{- $categories := .Page.Params.categories -}}
 {{- $summary := .Page.Params.summary -}}
 
@@ -53,24 +51,10 @@
         </div>
         {{- end -}}
 
-        {{- if $status -}}
-        <div class="metadata-item">
-            <span class="metadata-label">状态</span>
-            <span class="metadata-value">{{ partial "paper-status.html" $status }}</span>
-        </div>
-        {{- end -}}
-
         {{- if and $rating (gt $rating 0) -}}
         <div class="metadata-item">
             <span class="metadata-label">评分</span>
             <span class="metadata-value">{{ partial "rating.html" $rating }}</span>
-        </div>
-        {{- end -}}
-
-        {{- if $read_date -}}
-        <div class="metadata-item">
-            <span class="metadata-label">阅读日期</span>
-            <span class="metadata-value">{{ $read_date }}</span>
         </div>
         {{- end -}}
     </div>

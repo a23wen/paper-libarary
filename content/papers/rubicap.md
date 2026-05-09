@@ -16,10 +16,7 @@ paper_url: "https://arxiv.org/abs/2603.09160"
 arxiv_url: "https://arxiv.org/pdf/2603.09160"
 code_url: ""
 
-# 阅读状态
-status: "completed"
 rating: 5
-read_date: "2026-04-17"
 
 summary: "RubiCap 研究如何把强化学习从有明确 verifier 的任务扩展到开放式 dense image captioning。作者用五个强 VLM 组成 committee 生成候选描述，再让 LLM 针对当前学生模型的失败点合成样本级 rubric，并用 rubric-guided GRPO 优化 captioner。结果显示 RubiCap 在 CapArena 上显著优于 SFT、ROUGE 奖励和 Likert judge 奖励，还能减轻灾难性遗忘，并在 CaptionQA 上以更短描述达到更高信息密度。"
 ---

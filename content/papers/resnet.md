@@ -16,10 +16,7 @@ paper_url: "https://arxiv.org/abs/1512.03385"
 arxiv_url: "https://arxiv.org/abs/1512.03385"
 code_url: "https://github.com/KaimingHe/deep-residual-networks"
 
-# 阅读状态
-status: "completed"
 rating: 5
-read_date: "2024-02-10"
 
 summary: "提出残差学习框架，通过引入跳跃连接解决深度网络退化问题，使得训练超深网络（152 层）成为可能，赢得 ImageNet 2015 冠军。"
 ---

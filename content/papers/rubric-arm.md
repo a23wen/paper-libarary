@@ -16,10 +16,7 @@ paper_url: "https://arxiv.org/abs/2602.01511"
 arxiv_url: "https://arxiv.org/pdf/2602.01511"
 code_url: "https://huggingface.co/collections/OpenRubrics/rubricarm"
 
-# 阅读状态
-status: "completed"
 rating: 4
-read_date: "2026-04-23"
 
 summary: "这篇论文提出 Rubric-ARM：把 rubric 生成从静态 prompt 或独立 SFT 模块，改写成一个会影响 judge 正确性的潜变量动作，并用交替强化学习联合优化 rubric generator 和 judge。核心 insight 是：在非可验证任务里，高质量 reward 不是一个单独的标量打分器，而是“评价标准”和“基于标准的判断”共同演化出来的系统。实验显示 Rubric-ARM 在多个 reward modeling benchmark 上优于 Rubric-RM 等白盒基线，并能作为 DPO/GRPO 的奖励信号提升下游策略模型。"
 ---

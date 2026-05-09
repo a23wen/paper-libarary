@@ -18,10 +18,7 @@ code_url: ""
 slides_url: ""
 video_url: ""
 
-# 阅读状态
-status: "reading"  # reading, completed, to-read
 rating: 0  # 1-5 星评分
-read_date: ""
 
 summary: "简要概述这篇论文的主要贡献"
 ---

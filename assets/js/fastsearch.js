@@ -18,13 +18,6 @@ function asList(value) {
     return [];
 }
 
-function statusLabel(status) {
-    if (status === 'completed') return '已完成';
-    if (status === 'reading') return '正在阅读';
-    if (status === 'to-read') return '待阅读';
-    return status || '';
-}
-
 function renderResult(item) {
     const categories = asList(item.categories);
     const authors = asList(item.authors).slice(0, 3);
@@ -32,7 +25,6 @@ function renderResult(item) {
         categories.join(' / '),
         item.year,
         item.venues,
-        statusLabel(item.status),
         item.rating > 0 ? `${item.rating}/5` : ''
     ].filter(Boolean);
 
@@ -70,7 +62,6 @@ window.onload = function () {
                             'authors',
                             'venues',
                             'year',
-                            'status',
                             'rating'
                         ]
                     };

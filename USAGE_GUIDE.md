@@ -94,17 +94,8 @@ code_url: "https://github.com/..."      # 代码仓库
 slides_url: "https://..."                # 幻灯片链接
 video_url: "https://..."                 # 视频链接
 
-# 阅读状态
-status: "completed"                      # reading / completed / to-read
 rating: 5                                # 1-5星评分
-read_date: "2024-04-10"                 # 阅读日期
 ```
-
-### 状态说明
-
-- **to-read**：待阅读，计划阅读的论文
-- **reading**：正在阅读
-- **completed**：已完成阅读
 
 ## 🎨 使用 Shortcode
 
@@ -229,26 +220,22 @@ content/
 2. **设置元数据**
 - 修改 `title`、`authors`、`year`
 - 添加 `tags` 和 `categories`
-- 设置 `status: "reading"`
 - 添加链接（`paper_url`、`arxiv_url` 等）
 
 3. **边读边记**
 - 填写各个章节（概述、动机、方法、结果）
 - 添加个人评价
 
-4. **完成阅读**
-- 更新 `status: "completed"`
+4. **发布笔记**
 - 设置 `rating` (1-5星)
-- 填写 `read_date`
 - 将 `draft: false` 发布
 
-### 场景 2：添加待读论文
+### 场景 2：添加论文草稿
 
 ```yaml
 ---
 title: "Paper Title"
-status: "to-read"
-draft: false
+draft: true
 paper_url: "https://..."
 ---
 

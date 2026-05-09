@@ -16,10 +16,7 @@ paper_url: "https://arxiv.org/abs/2507.17746"
 arxiv_url: "https://arxiv.org/pdf/2507.17746"
 code_url: ""
 
-# 阅读状态
-status: "completed"
 rating: 4
-read_date: "2026-04-11"
 
 summary: "提出 Rubrics as Rewards（RaR），把按题目定制的 rubric/checklist 直接变成 GRPO 的奖励信号，使强化学习从数学、代码这类可验证任务扩展到医疗与科学等没有单一标准答案的真实推理场景，并在 HealthBench 与 GPQA-Diamond 上显著优于直接 Likert 打分奖励。"
 ---

@@ -16,10 +16,7 @@ paper_url: "https://arxiv.org/abs/2503.06749"
 arxiv_url: "https://arxiv.org/pdf/2503.06749"
 code_url: "https://github.com/Osilly/Vision-R1"
 
-# 阅读状态
-status: "completed"
 rating: 5
-read_date: "2026-04-13"
 
 summary: "Vision-R1 研究如何把 DeepSeek-R1 式强化学习迁移到多模态大模型上。作者先通过 modality bridging 构造 200K 的多模态 CoT 冷启动数据，再用 PTST 配合 GRPO 和硬格式结果奖励逐步放开推理长度，最终让 7B 模型在 MathVista 上达到 73.5%，逼近 OpenAI o1 级别的多模态数学推理表现。"
 ---
