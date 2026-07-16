@@ -284,14 +284,44 @@ Rubric-ARM 有两个模块：
 
 ### Stage I: SFT Warmup
 
-作者先做监督微调 warmup，让两个模块具备基本能力。
+作者先从同一个 `Qwen3-8B` backbone 出发，分别监督微调 rubric generator 和 judge，让两个模块具备基本能力。这里的 “warmup” 是**交替 RL 之前的能力初始化**，不是单指 learning-rate warmup；两个模块仍然彼此独立训练，loss 都是标准 next-token prediction / cross-entropy。
 
-使用的数据来自 OpenRubrics 的 general-domain 部分，以及相关开源数据：
+使用的是 OpenRubrics 的 general-domain 部分，其原始样本来自：
 
 - UltraFeedback；
 - SkyWork；
 - Magpie；
 - Synthetic Instruction Following。
+
+这些数据先被统一成 preference / ranking 形式。OpenRubrics 对 UltraFeedback 取最高分回答为 chosen、最低分回答为 rejected；Synthetic-IF 用 verifier 全部通过与否构造正负回答；只有二元偏好的样本直接形成 chosen--rejected pair，有多个候选和分数的样本则先按偏好降序排列。
+
+然后利用 response contrast 合成并筛选监督信号：
+
+1. GPT-4.1-Mini 阅读 `instruction + ordered responses`，合成同时包含 `[Hard Rule]` 和 `[Principle]` 的 rubric；
+2. Gemini-2.5-Flash-Lite 在 `instruction + rubric + response pair` 上生成逐 criterion 分析和最终 winner；
+3. 只保留 rubric 能让 judge 的预测与原始 preference label 足够一致的 prompt，并且只保留 judge 预测正确的具体 pair；listwise 数据最终展平成 pairwise 数据。
+
+因此最终公开数据的逻辑 schema 是：
+
+```text
+instruction, response_a, response_b, winner, rubric, judge, source
+```
+
+其中 `rubric` 是合成的编号标准列表，`judge` 是完整判断轨迹，通常依次包含 gatekeeper/compliance check、对 A/B 的逐条 criterion 分析、overall justification 和最终 `Winner: Response A/B`。
+
+基于同一条记录，会构造两套不同的 SFT 序列：
+
+```text
+Rubric generator:
+  input  = rubric-generation prompt + instruction
+  target = rubric
+
+Judge:
+  input  = judge prompt + instruction + rubric + response_a + response_b
+  target = judge trajectory (reasoning + final winner)
+```
+
+最关键的一点是：**合成 rubric target 时使用了 chosen/rejected responses 的对比信息，但训练 rubric generator 时输入只有 instruction**。这相当于把偏好对提供的 privileged contrastive signal 蒸馏到一个测试时只看 prompt 的 rubric generator 中。
 
 这一阶段的作用不是完成最终优化，而是让模型先会做两件事：
 
@@ -299,6 +329,8 @@ Rubric-ARM 有两个模块：
 - judge 能根据 rubric 写出判断过程并给出偏好。
 
 可以把它理解成“先让学生学会考试格式”。
+
+Rubric-ARM 正文没有单独报告这一步使用了多少条样本、train split 或 SFT 超参数，而是写明“following OpenRubrics”。OpenRubrics 报告的参考配置是：rubric generator 训练 1 epoch（cutoff 3072、batch 128、AdamW、LR `8e-6`），judge 训练 2 epochs（cutoff 6144、batch 64、AdamW、LR `5e-6`）。这些配置可用于复现 warm start，但不能视为 Rubric-ARM 论文再次明确确认的独立配置。
 
 ### Stage II: Alternating Reinforcement Learning
 
