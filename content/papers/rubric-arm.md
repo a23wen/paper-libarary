@@ -339,6 +339,47 @@ judge 的 reward 包含两部分：
 
 **rubric generator 学到的不是“写得像 rubric”，而是“写出能让 judge 判断正确的 rubric”。**
 
+### 实际的交替循环：先 J 后 G，共三轮
+
+论文的“交替”不是在同一个反向传播步骤里轮流更新参数，也不是同时更新两个模型。作者把 OpenRubrics 的 general-domain preference 数据等分成互不重叠的三部分，总共执行三轮 alternating RL；每一轮只使用其中一部分数据，执行顺序始终是：
+
+```text
+输入一条偏好数据 (x, y1, y2, o*)
+
+当前 generator G_t 根据 prompt x 生成 rubric r_t
+                         ↓
+缓存 r_t，冻结 G_t
+                         ↓
+Judge GRPO：更新 J_t → J_{t+1}
+reward = preference correctness + format reward
+                         ↓
+冻结更新后的 J_{t+1}
+                         ↓
+Generator GRPO：更新 G_t → G_{t+1}
+reward = J_{t+1}(x, y1, y2, r) 是否预测对 o*
+                         ↓
+进入下一数据分块和下一轮
+```
+
+写成论文中的更新式，就是：
+
+```text
+r_i^t ~ G_t(r | x_i)
+J_{t+1} = GRPO(J_t; cached r_i^t, D_t)
+G_{t+1} = GRPO(G_t; fixed J_{t+1}, D_t)
+```
+
+这里有四个实现细节特别重要：
+
+1. **Generator 只看 prompt `x`。** 它不读取 `y1/y2` 和 winner，因此不能直接把偏好答案泄漏到 rubric 中。
+2. **训练 judge 时，每条样本只采样一次 rubric 并缓存。** 同一份 rubric 会复用于多次 judge 更新，从而去掉 rubric 在 judge 训练期间不断变化造成的非平稳性。
+3. **训练 generator 时，一个 prompt 采样一组 rubric。** 每个 rubric 都交给冻结的 judge；judge 对该 rubric 只做一次 greedy judging rollout，判断正确记 1，错误记 0。
+4. **下一轮必须使用更新后的 judge。** Generator 学的是“什么 rubric 对当前更可靠的 judge 有帮助”，而不是对旧 judge 或外部 API 的离线偏好。
+
+论文的 GRPO 配置是：generator 每个 prompt 采样 6 个 rubric，judge 每个输入采样 7 条 judging trajectories；两者训练温度均为 1.0、学习率均为 `1e-6`、每阶段训练 1 epoch。Generator 的 cutoff length / batch size 为 512 / 288，judge 为 1024 / 224。在 generator 更新阶段，冻结 judge 对每份 rubric 的打分采用单次 greedy decoding，而不是再对 judge 做多次采样投票。
+
+因此，两者虽然“共同优化”，但不共享梯度，也不需要可微地穿过 judge：它们是两个独立的 GRPO policy，通过同一个离散的偏好正确性 reward 串联起来。这更接近 stochastic coordinate ascent 或 generalized EM，而不是普通端到端联合训练。
+
 ### 为什么先 judge 后 rubric generator
 
 论文的理论分析围绕梯度方差展开。
