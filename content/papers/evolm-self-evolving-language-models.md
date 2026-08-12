@@ -1,6 +1,6 @@
 ---
 title: "EvoLM: Self-Evolving Language Models through Co-Evolved Discriminative Rubrics"
-date: 2026-05-12T00:00:00+08:00
+date: 2026-08-12T13:40:00+08:00
 draft: false
 
 # 分类（研究领域）
@@ -19,7 +19,7 @@ code_url: "https://github.com/stellalisy/EvoLM"
 # 阅读状态
 status: "completed"
 rating: 4
-read_date: "2026-05-12"
+read_date: "2026-08-12"
 
 summary: "EvoLM 提出一种不依赖人工标注、专有 API、外部 reward model 或可验证答案的 LLM 后训练方法。它让同一个 Qwen3-8B 同时扮演 policy 和 rubric generator，通过交替 GRPO 训练 co-evolve：policy 用 rubric-conditioned judge 分数更新，rubric generator 则用当前 policy 与早期 checkpoint 输出之间的 temporal contrast 偏好对来学习更有判别力的评价标准。实验显示 EvoLM policy 在 OLMo3-Adapt 12 项平均达到 69.3%，超过 GPT-4.1 prompted rubrics 和 SkyWork-RM-V2 等基线。"
 ---
