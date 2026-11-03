@@ -2,7 +2,7 @@
 title: "Meta-Harness: End-to-End Optimization of Model Harnesses"
 date: 2026-10-21T12:00:00+08:00
 draft: false
-categories: ["自然语言处理"]
+categories: ["Harness-RSI"]
 venues: "COLM 2026"
 authors: ["Yoonho Lee", "Roshen Nair", "Qizheng Zhang", "Kangwook Lee", "Omar Khattab", "Chelsea Finn"]
 year: "2026"

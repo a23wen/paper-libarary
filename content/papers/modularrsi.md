@@ -3,7 +3,7 @@ title: "ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement
 date: 2026-10-21T10:03:00+08:00
 draft: false
 
-categories: ["自然语言处理"]
+categories: ["Harness-RSI"]
 venues: "arXiv 2026"
 authors: ["Siwei Wu", "Jincheng Ren", "Yizhi Li", "Haau-Sing Li", "Chengran Yang", "Xudong Ma", "Yuxuan Zhang", "Weicheng Gu", "Jian Yang", "Riza Batista-Navarro", "Chuanyi Zhang", "Xianglong Liu", "Ming Zhou", "Bryan Dai", "Chenghua Lin"]
 year: "2026"

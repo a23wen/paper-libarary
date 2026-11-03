@@ -2,7 +2,7 @@
 title: "Recursive Harness Self-Improvement"
 date: 2026-10-21T10:00:00+08:00
 draft: false
-categories: ["自然语言处理"]
+categories: ["Harness-RSI"]
 venues: "arXiv 2026"
 authors: ["Hyunin Lee", "Jinglue Xu", "Jeffrey Seely", "Donghyun Lee", "Matei Zaharia", "Yujin Tang"]
 year: "2026"
